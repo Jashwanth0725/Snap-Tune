@@ -12,6 +12,10 @@ app.get('/Jashu', (req, res) => {
     res.send("Hi Jashwanth. This is test of server");
 })
 
+app.get('/testing', (req, res) => {
+    res.send("This is testing page. Working successfully");
+})
+
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${port}`)
 })
