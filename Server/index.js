@@ -1,4 +1,5 @@
 // Desc: This is the main file of the server. This file will be used to start the server and listen to the port.
+
 require('dotenv').config();
 const express = require('express')
 const app = express()
@@ -14,6 +15,14 @@ app.get('/Jashu', (req, res) => {
 
 app.get('/testing', (req, res) => {
     res.send("This is testing page. Working successfully");
+})
+
+app.get('/jokes', (req, res) => {
+    const jokes = [
+        { "joke": "Why did the chicken cross the road?" },
+        { "joke": "Knock, knock. Who’s there?" }
+    ];
+    res.json(jokes);
 })
 
 app.listen(process.env.PORT, () => {
