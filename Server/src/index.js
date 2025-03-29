@@ -1,9 +1,7 @@
-// Desc: This is the main file of the server. This file will be used to start the server and listen to the port.
-
-require('dotenv').config();
+require('dotenv').config({ path: "../.env" });
 const express = require('express')
 const app = express()
-const port = 5000
+const PORT = process.env.PORT || 5000
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
@@ -14,7 +12,7 @@ app.get('/Jashu', (req, res) => {
 })
 
 app.get('/testing', (req, res) => {
-    res.send("This is testing page. Working successfully");
+    res.send("This is testing page. Working successfully, Just checking if the nodemon is running properl");
 })
 
 app.get('/jokes', (req, res) => {
@@ -25,6 +23,7 @@ app.get('/jokes', (req, res) => {
     res.json(jokes);
 })
 
-app.listen(process.env.PORT, () => {
-    console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`)
+    console.log("Server is running on port : https://localhost:" + PORT);
 })
