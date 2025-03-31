@@ -1,6 +1,9 @@
-require('dotenv').config({ path: "../.env" });
-const express = require('express')
+import dbconnect from './db/index.js';   //Importing database connectioning function
+import dotenv from 'dotenv';            // Importing dotenv to use environment variables
+dotenv.config({ path: '../.env' });
+import express from 'express';         // Importing express to create server
 const app = express()
+
 const PORT = process.env.PORT || 5000
 
 app.get('/', (req, res) => {
@@ -22,6 +25,9 @@ app.get('/jokes', (req, res) => {
     ];
     res.json(jokes);
 })
+
+
+dbconnect();
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)
