@@ -3,6 +3,7 @@ import { ApiError } from '../utils/ApiError.js';
 import { userdetails } from '../models/user.model.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
+import validator from 'validator';
 
 const registerUser = asyncHandler(async (req, res) => {
 
@@ -39,21 +40,23 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     //check for strong password
-    if (!validator.isStrongPasswod(password)) {
+    if (!validator.isStrongPassword(password)) {
         throw new ApiError(400, "Password is not strong");
     }
 
     //check for profile pic
     const profilePicLocalPath = req.files?.profilePic?.[0]?.path;
-    if (!profilePicLocalPath) {
-        throw new ApiError(400, "Profile picture is required");
-    }
+    // if (!profilePicLocalPath) {
+    //     throw new ApiError(400, "Profile picture is required");
+    // }
 
-    //upload to cloudinary
+    // //upload to cloudinary
+
     const profilePicUrl = await uploadOnCloudinary(profilePicLocalPath);
-    if (!profilePicUrl) {
-        throw new ApiError(500, "Failed to upload profile picture");
-    }
+
+    // if (!profilePicUrl) {
+    //     throw new ApiError(500, "Failed to upload profile picture");
+    // }
 
     //create user object
     const user = await userdetails.create({

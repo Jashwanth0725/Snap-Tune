@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import { ACCESS_TOKEN_EXPIRE_IN_MINUTES, REFRESH_TOKEN_EXPIRE_IN_DAYS } from "../constants.js";
 
 const userSchema = new mongoose.Schema({
     userName: {
@@ -19,7 +20,6 @@ const userSchema = new mongoose.Schema({
     },
     profilePic: {
         type: String,
-        required: true,
         default: "https://www.pngitem.com/pimgs/m/78-786778_profile-picture-placeholder-png-transparent-png.png",
     },
     email: {
