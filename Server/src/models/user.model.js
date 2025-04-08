@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     },
     profilePic: {
         type: String,
-        default: "https://www.pngitem.com/pimgs/m/78-786778_profile-picture-placeholder-png-transparent-png.png",
+        default: "https://res.cloudinary.com/dr1ktryw0/image/upload/v1736097744/samples/people/boy-snow-hoodie.jpg"
     },
     email: {
         type: String,
@@ -82,5 +82,6 @@ userSchema.methods.createRefreshToken = function () {
     })
 }
 
+const userdetails = mongoose.model("userdetails", userSchema);
 
-export const userdetails = mongoose.model("userdetails", userSchema);
+export default userdetails;
