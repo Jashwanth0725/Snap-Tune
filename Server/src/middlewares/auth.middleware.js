@@ -6,13 +6,13 @@ import { ApiError } from "../utils/ApiError.js";
 
 const verifyJWT = asyncHandler(async (req, res, next) => {
     try {
-        const accessToken = req.cookies?.accesToken || req.header("Authorization")?.replace("Bearer ", "");
+        const accessToken = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
 
         if (!accessToken) {
             throw new ApiError(401, "Unauthorized request");
         }
 
-        const decodedToken = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+        const decodedToken = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECERET);
 
         const user = await userdetails.findById(decodedToken?._id).select("-password -refreshToken");
 
