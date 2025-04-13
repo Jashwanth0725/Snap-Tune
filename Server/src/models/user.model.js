@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { ACCESS_TOKEN_EXPIRE_IN_MINUTES, REFRESH_TOKEN_EXPIRE_IN_DAYS } from "../constants.js";
+import { ACCESS_TOKEN_EXPIRE_IN_DAYS, REFRESH_TOKEN_EXPIRE_IN_DAYS } from "../constants.js";
 
 const userSchema = new mongoose.Schema({
     userName: {
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
         type: String
     }
 }, {
-    timestamps: true,
+    timestamps: true
 });
 
 //Password will be encrypted before saving it to the database
@@ -58,17 +58,15 @@ userSchema.pre("save", async function (next) {
 //This return true or false
 userSchema.methods.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password);
-}
+};
 
-
-//This method generates JWT token for user
 userSchema.methods.createAccessToken = function () {
     return jwt.sign({
         _id: this._id,
         userName: this.userName,
         email: this.email,
     }, process.env.ACCESS_TOKEN_SECERET, {
-        expiresIn: ACCESS_TOKEN_EXPIRE_IN_MINUTES
+        expiresIn: ACCESS_TOKEN_EXPIRE_IN_DAYS
     })
 }
 
@@ -79,8 +77,8 @@ userSchema.methods.createRefreshToken = function () {
         _id: this._id
     }, process.env.REFRESH_TOKEN_SECERET, {
         expiresIn: REFRESH_TOKEN_EXPIRE_IN_DAYS
-    })
-}
+    });
+};
 
 const userdetails = mongoose.model("userdetails", userSchema);
 
