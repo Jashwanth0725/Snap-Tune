@@ -71,6 +71,9 @@ const registerUser = asyncHandler(async (req, res) => {
     // //upload to cloudinary
 
     const profilePicUrl = await uploadOnCloudinary(profilePicLocalPath);
+    if (profilePicUrl) {
+        fs.unlinkSync(profilePicLocalPath);
+    }
 
     // if (!profilePicUrl) {
     //     throw new ApiError(500, "Failed to upload profile picture");
