@@ -21,4 +21,8 @@ import userRouter from './routes/user.routes.js';
 //declaring routes
 app.use('/api/v1/users', userRouter); // Using the user router for handling user-related routes
 
+import aiApiRoutes from './routes/generate.routes.js';
+
+app.use('/api/v1/generate', aiApiRoutes);
+
 export default app; 
