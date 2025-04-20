@@ -1,7 +1,8 @@
 import express from 'express';
-
 import cors from 'cors';                     // Importing cors to handle cross-origin requests
 import cookieParser from 'cookie-parser'; // Importing cookie-parser to parse cookies 
+import aiApiRoutes from './routes/generate.routes.js';
+import userRouter from './routes/user.routes.js';
 
 const app = express();                       // Creating an instance of express
 
@@ -15,13 +16,8 @@ app.use(express.urlencoded({ extended: true, limit: '20kb' })); // Parsing URL-e
 app.use(express.static('public'));       // Serving static files from the 'public' directory
 app.use(cookieParser());
 
-//routes imports 
-import userRouter from './routes/user.routes.js';
 
-//declaring routes
-app.use('/api/v1/users', userRouter); // Using the user router for handling user-related routes
-
-import aiApiRoutes from './routes/generate.routes.js';
+app.use('/api/v1/users', userRouter);
 
 app.use('/api/v1/generate', aiApiRoutes);
 
