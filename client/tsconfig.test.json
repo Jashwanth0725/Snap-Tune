@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig.json",  // Extending the base tsconfig
+    "compilerOptions": {
+      "jsx": "react-jsx",  // Required for JSX in tests as well
+      "module": "ESNext",   // Ensure Jest can handle ESM
+      "types": ["jest", "@testing-library/jest-dom"] // Include jest testing types
+    },
+    "include": [
+      "src/**/*.test.tsx",
+      "src/**/*.test.ts"
+    ],
+    "exclude": ["node_modules"]
+  }
+  
