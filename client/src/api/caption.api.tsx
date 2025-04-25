@@ -6,7 +6,7 @@ const generateCaptions = async (image: File): Promise<string> => {
 
   try {
     const response = await fetch(
-      "http://localhost:8000/api/v1/generate/caption",
+      "https://snap-tune-backend.onrender.com/api/v1/generate/caption",
       {
         method: "POST",
         body: formData,
