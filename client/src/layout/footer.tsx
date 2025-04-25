@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bottom-0 left-0 right-0 bg-white rounded-3xl border-gray-200 py-6 px-4 mt-5">
       <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Left: Logo or name */}
-        <div className="text-xl font-semibold text-blue-500">CapSum</div>
+        <div className="text-xl font-semibold text-blue-500">SnapTune</div>
 
         {/* Center: Navigation links */}
         {/* <ul className="flex flex-wrap gap-6 text-gray-600 font-medium text-sm">

@@ -1,24 +1,19 @@
-import { useState } from "react";
 import Caption from "../components/ai/caption";
-import { Button } from "@/components/ui/button";
-import Summarize from "../components/ai/summary";
 
 export default function Home() {
-  // const [isCaption, setIsCaption] = useState(true);
-  const [isSummarize, setIsSummarize] = useState(false);
   return (
     <>
       <section className="relative w-full bg-blue-500 text-white py-32 px-6 md:px-12 rounded-lg mx-auto flex justify-center items-center">
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-            Welcome to CapSum
+            Welcome to SnapTune
           </h1>
           <p className="text-lg md:text-xl mb-6">
             Transform your images into captivating AI-generated captions!
             <br></br>
             Explore the magic of instant, creative captions for your social
-            media posts. Let CapSum make your content stand out effortlessly.
+            media posts. Let SnapTune make your content stand out effortlessly.
           </p>
           <a
             href="#generate"

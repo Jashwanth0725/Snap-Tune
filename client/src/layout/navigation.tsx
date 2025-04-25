@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useAuth, useLogout } from "@/auth/firebase.auth";
@@ -29,7 +29,7 @@ export default function Navigation() {
       <div className="flex items-center justify-between w-full">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-blue-500">
-          CapSum
+          SnapTune
         </Link>
 
         {/* Toggle Button for Mobile */}

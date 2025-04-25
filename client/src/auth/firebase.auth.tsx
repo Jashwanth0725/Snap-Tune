@@ -34,15 +34,11 @@ export const useSignup = () => {
     }
   };
 
-  const signupUser = async (email: string, password: string, name: string) => {
+  const signupUser = async (email: string, password: string) => {
     setError(null);
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      await createUserWithEmailAndPassword(auth, email, password);
       //   const user = userCredential.user;
 
       //   await saveUserToMongoDB({
@@ -97,11 +93,7 @@ export const useLogin = () => {
     setError(null);
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      await signInWithEmailAndPassword(auth, email, password);
       //   const user = userCredential.user;
 
       //   await axios.post("/api/users", {

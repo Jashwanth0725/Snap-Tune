@@ -1,12 +1,12 @@
 export default function About() {
   return (
     <section className="max-w-4xl mx-auto px-6 py-16 text-center">
-      <h2 className="text-4xl font-bold text-blue-600 mb-6">About CapSum</h2>
+      <h2 className="text-4xl font-bold text-blue-600 mb-6">About SnapTune</h2>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-4">
-        CapSum is your creative companion powered by AI. Whether you're looking
-        to generate engaging captions from images or get concise summaries from
-        YouTube videos, CapSum is built to boost your content creation workflow.
+        SnapTune is your creative companion powered by AI. Are you're looking to
+        generate engaging captions from images? We is here for you. SnapTune is
+        built to boost your content creation workflow.
       </p>
       <p className="text-lg text-gray-700 leading-relaxed mb-4">
         Our mission is to simplify and enhance the way users interact with
@@ -14,7 +14,7 @@ export default function About() {
         transform your ideas into polished, share-worthy outputs.
       </p>
       <p className="text-lg text-gray-700 leading-relaxed mb-12">
-        CapSum is perfect for creators, marketers, and anyone looking to save
+        SnapTune is perfect for creators, marketers, and anyone looking to save
         time while still producing high-quality captions and summaries. Powered
         by modern AI models and built with love using the MERN stack.
       </p>

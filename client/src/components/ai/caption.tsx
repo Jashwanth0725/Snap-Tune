@@ -21,11 +21,11 @@ export default function Caption() {
   const userId = user?.uid ?? "";
 
   const countRef = useRef<number>(10);
-  const [generationCount, setGenerationCount] = useState<number>(10);
+  const [generationCount2, setGenerationCount] = useState<number>(10);
 
   // Load count from localStorage only on first mount
   useEffect(() => {
-    const storedCount = localStorage.getItem("generationCount");
+    const storedCount = localStorage.getItem("generationCount2");
     const parsedCount = storedCount ? parseInt(storedCount) : 10;
     setGenerationCount(parsedCount);
     countRef.current = parsedCount;
@@ -35,7 +35,7 @@ export default function Caption() {
   const updateGenerationCount = (newCount: number) => {
     setGenerationCount(newCount);
     countRef.current = newCount;
-    localStorage.setItem("generationCount", newCount.toString());
+    localStorage.setItem("generationCount2", newCount.toString());
   };
 
   // Decrement and update storage
@@ -139,7 +139,7 @@ export default function Caption() {
           {generating
             ? "Generating..."
             : image
-            ? `Generate Caption (Remaining: ${generationCount})`
+            ? `Generate Caption (Remaining: ${generationCount2})`
             : "Upload an image first"}
         </Button>
       </div>
