@@ -46,7 +46,7 @@ export default function Register() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    signupUser(values.email, values.password, values.name); //Email and pasword signup
+    signupUser(values.email, values.password); //Email and pasword signup
     toast.success("Account created!");
   }
 
