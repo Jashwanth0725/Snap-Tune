@@ -20,13 +20,13 @@ export default function Caption() {
 
   const userId = user?.uid ?? "";
 
-  const countRef = useRef<number>(10);
-  const [generationCount2, setGenerationCount] = useState<number>(10);
+  const countRef = useRef<number>(20);
+  const [generationCount2, setGenerationCount] = useState<number>(20);
 
   // Load count from localStorage only on first mount
   useEffect(() => {
     const storedCount = localStorage.getItem("generationCount2");
-    const parsedCount = storedCount ? parseInt(storedCount) : 10;
+    const parsedCount = storedCount ? parseInt(storedCount) : 20;
     setGenerationCount(parsedCount);
     countRef.current = parsedCount;
   }, []);
@@ -70,13 +70,12 @@ export default function Caption() {
       return;
     }
 
-    setGenerating(true);
-    decrementCount();
-
     try {
+      setGenerating(true);
       const caption = await generateCaptions(image);
       setCaptionText(caption);
       setCaptionGenerated(true);
+      decrementCount();
     } catch (error) {
       toast.error("Error generating caption");
     } finally {
@@ -95,13 +94,15 @@ export default function Caption() {
       return;
     }
 
-    decrementCount();
-
     try {
+      setGenerating(true);
       const newCaption = await generateAnotherCaption(captionText);
       setCaptionText(newCaption);
+      decrementCount();
     } catch (err) {
       toast.error("Error regenerating caption");
+    } finally {
+      setGenerating(false);
     }
   };
 
