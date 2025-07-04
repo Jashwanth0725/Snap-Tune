@@ -4,20 +4,20 @@ import asyncHandler from "../utils/asyncHandler.js";
 import { generateCaption, reGenerateCaption } from "../apis/caption.api.js";
 import { generateSummary, reGenerateSummary } from "../apis/summary.api.js";
 
-import fs from 'fs';
 
 const captionController = asyncHandler(async (req, res) => {
 
     try {
-        const imagePath = req.file?.path;
 
-        if (!imagePath) {
+        const fileBuffer = req.file?.buffer;
+        const mimeType = req.file?.mimetype;
+
+        if (!fileBuffer) {
             throw new ApiError(400, "Please upload an Image");
         }
 
-        const caption = await generateCaption(imagePath);
+        const caption = await generateCaption(fileBuffer, mimeType);
 
-        fs.unlinkSync(imagePath);
 
         const cleanCaptions = caption.replace(/Here are.*?:/, '').trim(); // Removes intro text
 
@@ -28,7 +28,7 @@ const captionController = asyncHandler(async (req, res) => {
         res.json(response);
 
     } catch (error) {
-        fs.unlinkSync(imagePath);
+        console.error('Error in captionController:', error);
         res.status(500).json({
             success: false,
             message: error.message
