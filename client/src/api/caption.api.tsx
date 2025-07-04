@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-const SERVER_URL = import.meta.env.VITE.SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const generateCaptions = async (image: File): Promise<string> => {
   const formData = new FormData();

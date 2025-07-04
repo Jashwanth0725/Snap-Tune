@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-const SERVER_URL = import.meta.env.VITE.SERVER.URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const generateSummary = async (url: string): Promise<string> => {
   const formData = new FormData();

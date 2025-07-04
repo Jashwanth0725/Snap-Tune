@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-const SERVER_URL = import.meta.env.SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const saveCaption = async (
   userId: string,
