@@ -1,6 +1,5 @@
-// import { useAuth } from "@/auth/firebase.auth";
 import { toast } from "sonner";
-// const { user } = useAuth();
+const SERVER_URL = import.meta.env.SERVER_URL;
 
 export const saveCaption = async (
   userId: string,
@@ -14,7 +13,7 @@ export const saveCaption = async (
   formData.append("caption", caption);
 
   try {
-    const response = await fetch("http://localhost:8000/api/v1/users/caption", {
+    const response = await fetch(`${SERVER_URL}/api/v1/users/caption`, {
       method: "POST",
       body: formData,
     });

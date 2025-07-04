@@ -1,17 +1,15 @@
 import { toast } from "sonner";
+const SERVER_URL = import.meta.env.VITE.SERVER_URL;
 
 const generateCaptions = async (image: File): Promise<string> => {
   const formData = new FormData();
   formData.append("image", image);
 
   try {
-    const response = await fetch(
-      "https://snap-tune-backend.onrender.com/api/v1/generate/caption",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch(`${SERVER_URL}/api/v1/generate/caption`, {
+      method: "POST",
+      body: formData,
+    });
 
     if (!response.ok) {
       throw new Error("Failed to generate caption");
@@ -32,13 +30,10 @@ const generateAnotherCaption = async (oldCaption: string): Promise<string> => {
   formData.append("oldCaption", oldCaption);
 
   try {
-    const response = await fetch(
-      "http://localhost:8000/api/v1/generate/re-caption",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch(`${SERVER_URL}/api/v1/generate/re-caption`, {
+      method: "POST",
+      body: formData,
+    });
 
     if (!response.ok) {
       throw new Error("Failed to generate caption");

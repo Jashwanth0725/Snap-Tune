@@ -1,17 +1,15 @@
 import { toast } from "sonner";
+const SERVER_URL = import.meta.env.VITE.SERVER.URL;
 
 const generateSummary = async (url: string): Promise<string> => {
   const formData = new FormData();
   formData.append("url", url);
 
   try {
-    const response = await fetch(
-      "http://localhost:8000/api/v1/generate/summary",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch(`${SERVER_URL}/api/v1/generate/summary`, {
+      method: "POST",
+      body: formData,
+    });
 
     if (!response.ok) {
       throw new Error("Failed to generate summary");
@@ -32,13 +30,10 @@ const reGenerateSummary = async (oldSummary: string): Promise<string> => {
   formData.append("oldSummary", oldSummary);
 
   try {
-    const response = await fetch(
-      "http://localhost:8000/api/v1/generate/re-summary",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch(`${SERVER_URL}/api/v1/generate/re-summary`, {
+      method: "POST",
+      body: formData,
+    });
 
     if (!response.ok) {
       throw new Error("Failed to generate summary");
