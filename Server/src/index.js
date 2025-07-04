@@ -2,7 +2,9 @@ import dbconnect from './db/index.js';   //Importing database connectioning func
 import dotenv from 'dotenv';            // Importing dotenv to use environment variables
 import favicon from 'serve-favicon'; // Importing favicon to serve favicon files
 import express from 'express';           // Importing express
-dotenv.config({ path: '../.env' });
+
+dotenv.config();
+
 import app from './app.js';           // Importing the app configuration
 
 const PORT = process.env.PORT || 5000  // Port number for the server
