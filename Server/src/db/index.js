@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { DB_NAME } from '../constants.js';
 import dotenv from 'dotenv';
-dotenv.config('.../.env'); // Load environment variables from .env file
+dotenv.config(); // Load environment variables from .env file
 
 const dbconnect = async () => {
     try {
